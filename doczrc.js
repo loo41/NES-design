@@ -5,4 +5,5 @@ export default {
   typescript: true,
   themesDir: 'theme',
   menu: ['Introduction', '入门 / Getting Started'],
+  base: '/NES-design/'
 };
