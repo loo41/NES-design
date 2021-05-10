@@ -1,0 +1,54 @@
+---
+name: 安装 / Install
+route: /install
+menu: 入门 / Getting Started
+---
+
+import { Text } from '@components';
+import { Playground, TagVersion, Explain } from 'docz';
+
+## Installation
+
+<div style={{ marginTop: 30 }} />
+
+### 1. Install NES-design
+
+<Explain code="npm install nes-design" isCopyable/>
+
+### 2. Install peerDependencies
+
+<Explain code="npm install nes.css react@^16.8" isCopyable/>
+
+### 3. Import css
+
+<Explain code="import 'node_modules/nes-design/es/index.css'" isCopyable/>
+<Explain code="import 'node_modules/nes.css/css/nes.css'" isCopyable/>
+
+### 4. Use
+
+<Explain code="import { Component } from 'nes-design'" isCopyable/>
+<Explain code="import Component from 'nes-design/Component'" isCopyable/>
+
+<div style={{ marginTop: 30 }} />
+
+## custom theme
+
+<div style={{ marginTop: 30 }} />
+
+### 1. Remove nes.css css
+<Text status="error" style={{ fontWeight: 'bold' }}>Cannot remove nes-design css</Text>
+
+### 2. Create scss file And Import scss
+<Explain code="import 'node_modules/nes.css/scss/nes.scss'" isCopyable/>
+
+### 3. Cover scss theme variable
+
+<Text>
+  <Text tag="a" href="https://github.com/nostalgic-css/NES.css/blob/develop/scss/base/variables.scss">
+    Theme variable
+  </Text>
+</Text>
+
+### 4. For Example
+
+<Explain code="$base-color: red !default;" isCopyable/>
