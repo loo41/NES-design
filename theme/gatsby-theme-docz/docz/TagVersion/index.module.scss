@@ -1,0 +1,14 @@
+.TagVersion {
+  height: 80px;
+  display: flex;
+  padding: 10px 0;
+  a {
+    margin-right: 40px;
+    font-weight: bold;
+    box-shadow: 1px 1px 5px rgba($color: #000000, $alpha: 0.8);
+    * {
+      font-size: 14px;
+      color: white;
+    }
+  }
+}

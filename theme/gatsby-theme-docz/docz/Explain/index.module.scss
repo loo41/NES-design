@@ -1,0 +1,54 @@
+.container {
+  background-color: $basic-background-color;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: white;
+  padding: 10px;
+  position: -webkit-sticky;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  height: 50px;
+  top: 0;
+  margin-bottom: $basic-padding;
+  z-index: 10;
+  pre {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin: 0;
+  }
+  .copy {
+    height: 22px;
+    position: absolute;
+    padding: 0 10px;
+    transition: all 0.5 ease;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid white;
+    align-items: center;
+    font-size: 14px;
+    right: 5px;
+    top: 5px;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+  .isCopy {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .isCopied {
+    background-color: $basic-background-color;
+  }
+}
+
+.textarea {
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1;
+}

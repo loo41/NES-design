@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'zpix';
+  src: url('./assets/font/zpix.ttf');
+  src: url('./assets/font/zpix.ttf') format('truetype');
+}
+body * {
+  font-family: 'zpix' !important;
+}

@@ -1,0 +1,30 @@
+.contentContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  height: 100vh;
+  overflow: auto;
+}
+.content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 200px;
+  padding-top: 50px;
+  margin-right: 300px;
+  border-radius: 5px;
+  max-width: 1600px;
+}
+.contentHeader {
+  position: fixed;
+  top: 0;
+  height: 50px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  opacity: 0;
+  z-index: 1;
+}
+.contentBottom {
+  height: 50px;
+}
