@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "outDir": "types",
+    "baseUrl": ".",
+    "downlevelIteration": true,
+    "checkJs": true,
+    "jsx": "react",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+  },
+  "exclude": [
+    "node_modules",
+    "components/**/__tests__/*.tsx",
+    "dist"
+  ],
+  "include": [
+    "components/**/*.tsx",
+    "components/**/*.ts",
+    "components/*.tsx",
+  ]
+}
