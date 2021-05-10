@@ -1,0 +1,20 @@
+.#{injectPrefixCls(radio)} {
+  margin-right: 10px;
+}
+
+.nes-radio.is-disabled {
+  + span {
+    color: gray;
+    cursor: not-allowed;
+  }
+  + span::before {
+    color: gray;
+    cursor: not-allowed;
+  }
+  &:checked:hover,
+  &:checked:focus {
+    & + span::before {
+      animation: unset;
+    }
+  }
+}

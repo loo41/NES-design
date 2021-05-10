@@ -1,0 +1,150 @@
+---
+name: 输入框 / Input
+route: /input
+menu: 表单 / Form
+---
+
+import { Input, TextArea, Text, Table} from '@components';
+import { Playground } from 'docz';
+import { Props } from './config';
+
+## Input
+
+<TagVersion component="Input" />
+
+## Use and Import
+
+<Explain component="Input" isCopyable/>
+
+## Tips
+
+<Text status="error">Input / Textarea share a common component, which needs to be distinguished by inputType</Text>
+<Text status="error">输入框和文本框共用一个组件，需要使用 inputType 参数进行区分</Text>
+
+
+## Case
+
+<Playground wrapper="Input / TextArea">
+  {
+    () => {
+      const [value, setValue] = useState('');
+      return (
+        <>
+          <div style={{display: 'flex'}}>Input Value: <Text style={{marginLeft: 10}} status="success">{value}</Text></div>
+          <Input
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            placeholder="Input"
+          />
+          <TextArea 
+            value={value} 
+            inputType="textarea" 
+            placeholder="TextArea"
+            onChange={e => setValue(e.target.value)}
+          />
+        </>
+      )
+    }
+  }
+</Playground>
+
+<Playground wrapper="Status">
+  <Input placeholder="none" />
+  <Input status="success" placeholder="success" />
+  <TextArea inputType="textarea" status="warning" placeholder="textarea placeholder" />
+  <Input status="error" placeholder="error" />
+  <Input disabled placeholder="disabled" />
+</Playground>
+
+<Playground wrapper="Suffix">
+  <Input
+    addonBefore={
+      <div
+        style={{
+          width: 150,
+          display: 'flex',
+          height: '100%',
+          alignItems: 'center',
+          fontWeight: 'bold',
+        }}
+      >
+        Before Suffix
+      </div>
+    }
+  />
+  <Input
+    inputType="textarea"
+    addonAfter={
+      <div
+        style={{
+          width: 150,
+          display: 'flex',
+          height: '100%',
+          alignItems: 'center',
+          fontWeight: 'bold',
+          justifyContent: 'center',
+        }}
+      >
+        After Suffix
+      </div>
+    }
+  />
+</Playground>
+
+<Playground wrapper="Input Type">
+  <>
+    {['text', 'time', 'checkbox', 'password', 'date', 'email'].map((type) => (
+      <Input
+        key={type}
+        placeholder={type}
+        type={type}
+        addonBefore={
+          <div
+            style={{
+              width: 100,
+              display: 'flex',
+              height: '100%',
+              alignItems: 'center',
+              fontWeight: 'bold',
+            }}
+          > 
+            {type} 
+          </div>
+        }
+      />
+    ))}
+  </>
+</Playground>
+
+<Playground wrapper="theme">
+  <TextArea inputType="textarea" theme="dark" />
+  <Input theme="dark" status="success" placeholder="dark" />
+</Playground>
+
+
+## Props
+
+<>
+  {
+    [Props.public, Props.input, Props.textarea].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

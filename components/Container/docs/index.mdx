@@ -1,0 +1,74 @@
+---
+name: 容器 / Container
+route: /container
+menu: 信息 / Information
+---
+
+import { Container, Table } from '@components';
+import { Playground } from 'docz';
+import { Props } from './config';
+
+## Container
+
+<TagVersion component="Container" />
+
+## Use and Import
+
+<Explain component="Container" isCopyable/>
+
+## Case
+
+<Playground wrapper="container">
+  <Container />
+  <Container> This is container</Container>
+  <Container title="Title"> This is container with a title </Container>
+</Playground>
+
+
+<Playground wrapper="Title Center">
+  <Container center title="Title Center">
+    <div style={{ display: 'flex' }}>自定义</div>
+  </Container>
+</Playground>
+
+<Playground wrapper="Round">
+  <Container center title="Round" round>
+    round Container
+  </Container>
+</Playground>
+
+<Playground wrapper="Theme">
+  <Container center title="Theme" theme="dark" round>
+    Theme Container
+  </Container>
+  <Container title="Theme" theme="dark" style={{ marginTop: 20 }}>
+    Theme Container
+  </Container>
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+                height: 60,
+                borderTop: '4px solid white', 
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

@@ -1,0 +1,7 @@
+.#{injectPrefixCls(inline)} {
+  display: flex;
+}
+
+.#{injectPrefixCls(is-disabled)} {
+  opacity: 0.6;
+}

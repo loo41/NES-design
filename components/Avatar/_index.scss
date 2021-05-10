@@ -1,0 +1,10 @@
+.#{injectPrefixCls(avatar)} {
+  background-color: #ccc;
+  display: inline-block;
+  overflow: hidden;
+  img {
+    height: 100%;
+    width: 100%;
+    vertical-align: top;
+  }
+}

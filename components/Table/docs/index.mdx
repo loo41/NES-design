@@ -1,0 +1,201 @@
+---
+name: 表格 / Table
+route: /table
+menu: 数据 / Data
+---
+
+import { Table, Text, Icon } from '@components';
+import { Playground } from 'docz';
+import { Props } from './config';
+
+## Table
+
+<TagVersion component="Table" />
+
+## Use and Import
+
+<Explain component="Table" isCopyable/>
+
+## Case
+
+<Playground wrapper="Table">
+  {() => {
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+      },
+      {
+        title: 'Operations',
+        dataIndex: '',
+        key: 'operations',
+        render: () => <Text status="error">Delete</Text>,
+      },
+    ];
+    const data = [
+      { name: 'Bruce Lee', age: '-', address: 'China - USA', key: 'Bruce Lee' },
+      { name: 'Jackie Chan', age: '-', address: 'beijin China', key: 'Jackie Chan' },
+    ];
+    return <Table columns={columns} style={{marginTop: 50}}  data={data} />
+  }}
+</Playground>
+
+
+<Playground wrapper="Scroll Table">
+  {() => {
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        key: 'age',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key: 'address',
+        width: 1000,
+      },
+      {
+        title: 'Operations',
+        dataIndex: '',
+        key: 'operations',
+        width: 1000,
+        render: () => <Text status="error">Delete</Text>
+      },
+    ];
+    const data = [
+      { name: 'Bruce Lee', age: '-', address: 'China - USA', key: 'Bruce Lee' },
+      { name: 'Jackie Chan', age: '-', address: 'beijin China', key: 'Jackie Chan' },
+    ];
+    return <Table columns={columns} theme="dark" scroll={{x: 2000}} data={data} />
+  }}
+</Playground>
+
+
+<Playground wrapper="Fixed Table">
+  {() => {
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        fixed: true,
+        width: 200,
+        key: 'name',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        width: 200,
+        fixed: 'left',
+        key: 'age',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        width: 1000,
+        key: 'address',
+      },
+      {
+        title: 'Operations',
+        dataIndex: '',
+        key: 'operations',
+        render: () => <a href="#">Delete</a>,
+      },
+    ];
+    const data = [
+      { name: 'Bruce Lee', age: '-', address: 'China - USA', key: 'Bruce Lee' },
+      { name: 'Jackie Chan', age: '-', address: 'beijin China', key: 'Jackie Chan' },
+    ];
+    return (
+      <>
+        <Table columns={columns} scroll={{x: 2000}}  theme="dark"  data={data} />
+        <Table columns={columns} scroll={{x: 2000}} style={{marginTop: 50}}  data={data} />
+      </>
+    )
+  }}
+</Playground>
+
+<Playground wrapper="More Table">
+  {() => {
+    const expandedRowRender = () => {
+      const columns = [
+        { title: 'Date', dataIndex: 'date', key: 'date' },
+        { title: 'Name', dataIndex: 'name', key: 'name' },
+      ]
+      const data = [];
+      for (let i = 0; i < 3; ++i) {
+        data.push({
+          key: i,
+          date: '2014-12-24 23:12:00',
+          name: 'not Name',
+        });
+      }
+      return <Table columns={columns} theme="dark" data={data}  />;
+    };
+    const expandIcon = () => <Icon name="star" />
+    const columns = [
+      { title: 'Date', dataIndex: 'date', key: 'date' },
+      { title: 'Name', dataIndex: 'name', key: 'name' },
+    ];
+    const data = [
+      { name: 'Bruce Lee', age: '-', address: 'China - USA', key: 'Bruce Lee' },
+      { name: 'Jackie Chan', age: '-', address: 'beijin China', key: 'Jackie Chan' },
+    ];
+    return <Table 
+      columns={columns} 
+      theme="dark" 
+      expandable={{ expandedRowRender, expandIcon, defaultExpandAllRows: true }} 
+      data={data}
+    />
+  }}
+</Playground>
+
+
+## Props
+<Text status="error" style={{ fontWeight: 'bold' }}>
+  Table component extends rc-table, default support rc-table all attrs
+</Text>
+<Text tag="a" href="https://www.npmjs.com/package/rc-table">
+  See More Properties
+</Text>
+
+<>
+  {
+    [Props.public].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

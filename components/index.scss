@@ -1,0 +1,34 @@
+// 和 common.js 同步
+// 提供一个注入前缀的方法
+
+$prefixCls: nes-design;
+
+@function injectPrefixCls($className) {
+  @return $prefixCls + '-' + $className;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// 公共样式
+
+.#{injectPrefixCls(is-disabled-cursor)} {
+  cursor: not-allowed;
+}
+
+.#{injectPrefixCls(is-disabled)} {
+  color: #adafbc;
+  cursor: not-allowed;
+}
+
+@import './Button/_index.scss';
+@import './CheckBox/_index.scss';
+@import './Container/_index.scss';
+@import './Input/_index.scss';
+@import './Avatar/_index.scss';
+@import './Icon/_index.scss';
+@import './Modal/_index.scss';
+@import './Modal/_index.scss';
+@import './Table/_index.scss';
+@import './Radio/_index.scss';

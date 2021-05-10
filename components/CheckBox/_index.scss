@@ -1,0 +1,14 @@
+.#{injectPrefixCls(checkbox-group-item)} {
+  margin-right: 10px;
+}
+
+.nes-checkbox.is-disabled {
+  + span {
+    color: gray;
+    cursor: not-allowed;
+  }
+  + span::before {
+    color: gray;
+    cursor: not-allowed;
+  }
+}

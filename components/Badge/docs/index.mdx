@@ -1,0 +1,80 @@
+---
+name: 徽章 / Badge
+route: /badge
+menu: 信息 / Information
+---
+
+import { Playground } from 'docz';
+import { Badge, Table } from '@components';
+import { Props } from './config';
+
+## Badge
+
+<TagVersion component="Badge" />
+
+## Use and Import
+
+<Explain component="Badge" isCopyable/>
+
+## Case
+
+<Playground wrapper="Badge">
+  <Badge 
+    options={[{
+      status: 'primary',
+      children: 'Badge'
+    }]} 
+  />
+</Playground>
+
+<Playground wrapper="Type">
+  <div>
+    <Badge type="split" 
+      options={[{
+        status: 'dark',
+        children: 'Npm'
+      }, 
+      {
+        status: 'success',
+        children: '1.0.0'
+      }]} 
+    />
+  </div>
+  <Badge type="icon" 
+    options={[{
+      status: 'primary',
+      children: <Icon name="github" />
+    }, 
+    {
+      status: 'success',
+      children: 'GitHub'
+    }]}
+  />
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public, Props.options].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

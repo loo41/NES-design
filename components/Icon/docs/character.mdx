@@ -1,0 +1,62 @@
+---
+name: 人物 / character
+route: /character-icon
+menu: 图标 / Icon
+---
+
+import { Playground, Explain } from 'docz';
+import { Icon, Character, Table, Text } from '@components';
+import { Props } from './config'
+
+## Character
+
+<TagVersion component="Character" />
+
+## Use and Import
+
+<Explain component="Character" isCopyable/>
+
+## Case
+
+<Playground wrapper="应用图标">
+  <Text status="error">
+    Nintendo owns the copyright of these characters. Please comply with the Nintendo guidelines and laws of the applicable jurisdiction.
+  </Text>
+   <Text status="error">
+    任天堂拥有这些角色的版权。请遵守任天堂指南和适用司法管辖区的法律。
+  </Text>
+  <Character name="nes-mario" />
+  <Character name="nes-ash" />
+  <Character name="nes-pokeball" />
+  <Character name="nes-bulbasaur" />
+  <Character name="nes-charmander" />
+  <Character name="nes-squirtle" />
+  <Character name="nes-kirby" />
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.character].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+            {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

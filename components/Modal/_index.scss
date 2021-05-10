@@ -1,0 +1,11 @@
+.#{injectPrefixCls(dialog-footer)} {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+  button:first-child {
+    margin-right: 10px;
+  }
+  button:last-child {
+    margin-left: 10px;
+  }
+}

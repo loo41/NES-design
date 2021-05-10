@@ -1,0 +1,17 @@
+.#{injectPrefixCls(large)} {
+  display: inline-block;
+  height: 64px;
+  width: 64px;
+}
+
+.#{injectPrefixCls(middle)} {
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+}
+
+.#{injectPrefixCls(small)} {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+}

@@ -1,0 +1,63 @@
+---
+name: 列表 / List
+route: /list
+menu: 信息 / Information
+---
+
+import { List, Table } from '@components';
+import { Playground } from 'docz';
+import { Props } from './config';
+
+
+## Rate
+
+<TagVersion component="List" />
+
+## Use and Import
+
+<Explain component="List" isCopyable/>
+
+## Case
+
+<Playground wrapper="disc">
+  <List>
+    <li>This</li>
+    <li>This is disc</li>
+    <li>This is disc List</li>
+  </List>
+</Playground>
+
+<Playground wrapper="Circle">
+  <List type="circle">
+    <li>This</li>
+    <li>This is circle</li>
+    <li>This is circle List</li>
+  </List>
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

@@ -1,0 +1,69 @@
+---
+name: 文本 / Text
+route: /text
+menu: 信息 / Information
+---
+
+import { Text, List, Table} from '@components';
+import { Playground } from 'docz';
+import { Props } from './config';
+
+## Text
+
+<TagVersion component="Text" />
+
+## Use and Import
+
+<Explain component="Text" isCopyable/>
+
+## Case
+
+<Playground wrapper="Text">
+  <Text>This is Text</Text>
+</Playground>
+
+
+<Playground wrapper="Status">
+  <Text status="primary" >This is primary Text</Text>
+  <Text status="success">This is success Text</Text>
+  <Text status="warning">This is warning Text</Text>
+  <Text status="error">This is error Text</Text>
+  <Text status="disabled">This is disabled Text</Text>
+</Playground>
+
+<Playground wrapper="Custom Tag">
+  <List>
+    {
+      ['primary', 'success', 'success', 'error', 'disabled'].map((status) => (
+        <Text status={status} key={status} tag="li" >This is primary Text</Text>
+      ))
+    }
+  </List>
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+                height: 60,
+                borderTop: '4px solid white', 
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

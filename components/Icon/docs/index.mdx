@@ -1,0 +1,91 @@
+---
+name: 通用 / Common
+route: /icon
+menu: 图标 / Icon
+---
+
+import { Playground, Explain } from 'docz';
+import { Icon, Table } from '@components';
+import { Props } from './config';
+
+## Icon
+
+<TagVersion component="Icon" />
+
+## Use and Import
+
+<Explain component="Icon" isCopyable/>
+
+## Case
+
+<Playground wrapper="App Icon">
+  <Icon name="twitter" />
+  <Icon name="facebook" />
+  <Icon name="instagram" />
+  <Icon name="github" />
+  <Icon name="google" />
+  <Icon name="gmail" />
+  <Icon name="medium" />
+  <Icon name="linkedin" />
+  <Icon name="twitch" />
+  <Icon name="youtube" />
+  <Icon name="reddit" />
+  <Icon name="whatsapp" />
+</Playground>
+
+<Playground wrapper="Other Icon">
+  <Icon name="close" />
+  <Icon name="trophy" />
+  <Icon name="coin" />
+  <Icon name="heart" />
+  <Icon name="like" />
+  <Icon name="star" />
+</Playground>
+
+<Playground wrapper="Size">
+  <Icon name="trophy" size="large" />
+  <Icon name="trophy" />
+  <Icon name="trophy" />
+  <Icon name="trophy" size="small" />
+</Playground>
+
+
+<Playground wrapper="Injection Class">
+  <Text status="error">Provide custom Icon class to meet the needs of NES.CSS special Icon</Text>
+  <Text status="error">提供自定义 Icon 类，适应官方无规则的 Icon 需求</Text>
+  <Icon customClass="nes-logo" />
+  <Icon customClass="nes-jp-logo" />
+  <Icon customClass="snes-logo" />
+  <Icon customClass="snes-jp-logo" />
+  <Icon customClass="nes-octocat animate" />
+  <Icon customClass="nes-smartphone" />
+  <Icon customClass="nes-phone" />
+</Playground>
+
+
+## Props
+
+<>
+  {
+    [Props.icon, Props.icons].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+            {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

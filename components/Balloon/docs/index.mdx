@@ -1,0 +1,75 @@
+---
+name: 气泡 / Balloon
+route: /balloon
+menu: 反馈 / Feedback
+---
+
+import { Playground, Explain } from 'docz';
+import { Balloon, Table, Avatar} from '@components';
+import { Props } from './config';
+
+
+## Balloon
+
+<TagVersion component="Balloon" />
+
+## Use and Import
+
+<Explain component="Balloon" isCopyable/>
+
+## Case
+
+<Playground wrapper="Balloon">
+  <div style={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: 250
+  }}>
+    <Avatar size="large"/>
+    <Balloon place="left">Hello Mark</Balloon>
+  </div>
+  <div style={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: 250,
+    marginLeft: 300
+  }}>
+    <Balloon place="right">Goodbye Mark</Balloon>
+    <Avatar size="large" round/>
+  </div>
+</Playground>
+
+<Playground wrapper="Theme">
+  <div style={{ background: '#1a1a1a', padding: 10 }}>
+    <Balloon place="left" theme="dark">Keep Love</Balloon>
+  </div>
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

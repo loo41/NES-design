@@ -1,0 +1,107 @@
+---
+name: 评分 / Rate
+route: /rate
+menu: 反馈 / Feedback
+---
+
+import { Playground, Explain } from 'docz';
+import { Rate, Text, Table } from '@components';
+import { Props } from './config';
+
+
+## Rate
+
+<TagVersion component="Rate" />
+
+## Use and Import
+
+<Explain component="Rate" isCopyable/>
+
+## Case
+
+<Playground wrapper="Rate">
+  {
+    () => {
+      const [value, setValue] = useState(1);
+      return (
+        <Rate  value={value} allowHalf={false} onChange={(value) => setValue(value)} />
+      )
+    }
+  }
+</Playground>
+
+<Playground wrapper="AllowClear / False">
+  {
+    () => {
+      const [value, setValue] = useState(2);
+      return (
+        <>
+          <Text status="error" style={{ fontWeight: 'bold' }}> AllowClear Attribute / if value change disabled will change true </Text>
+          <Rate allowClear={false} icon="heart" value={value} onChange={(value) => setValue(value)} />
+        </>
+      )
+    }
+  }
+</Playground>
+
+<Playground wrapper="disabled">
+  {
+    () => {
+      const [value, setValue] = useState(3);
+      return (
+        <Rate disabled value={value} allowHalf={false} onChange={(value) => setValue(value)} />
+      )
+    }
+  }
+</Playground>
+
+<Playground wrapper="Icon Half">
+  {
+    () => {
+      const [value, setValue] = useState(3.5);
+      return (
+        <>
+          <Text status="error" style={{ fontWeight: 'bold' }}>only icon('heart' | 'start') support half </Text>
+          <Rate value={value} onChange={(value) => setValue(value)} />
+          <Rate value={value} icon="heart" onChange={(value) => setValue(value)} />
+        </>
+      )
+    }
+  }
+</Playground>
+
+<Playground wrapper="Hover Change">
+  {
+    () => {
+      const [value, setValue] = useState(4);
+      return <Rate icon="like" count={10} value={value} onHoverChange={(value) => setValue(value)} />
+    }
+  }
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

@@ -1,0 +1,106 @@
+---
+name: 对话框 / Modal
+route: /modal
+menu: 反馈 / Feedback
+---
+
+import { Playground, Explain } from 'docz';
+import { Modal, Button, Text, Table } from '@components';
+import { Props } from './config';
+
+## Modal
+
+<TagVersion component="Modal" />
+
+## Use and Import
+
+<Explain component="Modal" isCopyable/>
+
+## Import Tips
+
+<Text status="error">
+  NES.css does not include any JavaScript. If you want to use dialog element other than Chrome, you need polyfill. 
+</Text>
+<Text status="error">
+  官方未提供 dialog 的 polyfill，使用请注意浏览器兼容性。
+</Text>
+
+## Case
+
+<Playground>
+  {() => {
+    const [visible, setVisible] = useState(false)
+    const [round, setRound] = useState(false)
+    const [theme, setTheme] = useState('')
+    return (
+      <div>
+        <Button status="primary" onClick={() => setVisible(true)}>
+          Open Modal
+        </Button>
+        <Button style={{marginLeft: 10}} onClick={() => setRound(!round)}>
+          Modal Round Control
+        </Button>
+        <Button style={{marginLeft: 10}} onClick={() => setTheme(theme? '': 'dark')}>
+          Modal Theme Control
+        </Button>
+        <Text style={{marginTop: 10}}>Modal Attr: round: {String(round)} / theme: {theme}</Text>
+        <Modal 
+          visible={visible} 
+          onCancel={() => setVisible(false)} 
+          theme={theme}
+          round={round}
+          onOk={() => setVisible(false)}>
+          {(dialogRef) => <div style={{ height: 50 }}> This is Modal Body</div>}
+        </Modal>
+      </div>
+    )
+  }}
+</Playground>
+
+<Playground wrapper="Custom Modal">
+  {() => {
+    const [visible, setVisible] = useState(false)
+    return (
+      <div>
+        <Button status="primary" onClick={() => setVisible(true)}>
+          Open Modal
+        </Button>
+        <Modal 
+          visible={visible} 
+          renderFooter={(dialogElement) => (
+            <Button block status="primary" onClick={() => setVisible(false)}> Custom Footer </Button>
+          )}
+        >
+          {(dialogElement) => <div style={{ height: 50 }}> This is Modal Body</div>}
+        </Modal>
+      </div>
+    )
+  }}
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

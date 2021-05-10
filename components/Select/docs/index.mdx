@@ -1,0 +1,94 @@
+---
+name: 选择器 / Select
+route: /select
+menu: 表单 / Form
+---
+
+import { Playground, Explain, TagVersion } from 'docz';
+import { Select, Table } from '@components';
+import { Props } from './config'
+
+## Select
+
+<TagVersion component="Select" />
+
+## Use and Import
+
+<Explain component="Select" isCopyable/>
+
+
+## Case
+
+<Playground wrapper="Select">
+  {
+    () => {
+      const [value, setValue] = useState("banana")
+      return (
+        <>
+          <div style={{display: 'flex'}}>Select Fruit: <Text status="success" style={{marginLeft: 10}}>{value}</Text></div>
+          <Select
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            options={[
+              { value: 'apple', label: 'Apple' },
+              { value: 'banana', label: 'Banana' },
+            ]}
+          />
+        </>
+      )
+    }
+  }
+</Playground>
+
+<Playground wrapper="Status">
+  <>
+    {
+      ['success', 'warning', 'error'].map((status) => 
+        <Select 
+          status={status}
+          options={[
+            { value: 'apple', label: 'Apple' },
+            { value: 'banana', label: 'Banana' },
+          ]}
+        />
+      )
+    }
+  </>
+</Playground>
+
+<Playground wrapper="disabled">
+  <Select
+    disabled
+    options={[
+      { value: 'apple', label: 'Apple' },
+      { value: 'banana', label: 'Banana' },
+    ]}
+  />
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public, Props.option].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

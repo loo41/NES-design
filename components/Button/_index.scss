@@ -1,0 +1,8 @@
+.#{injectPrefixCls(button-block)} {
+  width: calc(100% - 8px);
+}
+
+.#{injectPrefixCls(text-disabled)} {
+  position: relative;
+  pointer-events: none;
+}

@@ -1,0 +1,71 @@
+---
+name: 按钮 / Button
+route: /button
+menu: 表单 / Form
+---
+
+import { Button, Table } from '@components';
+import { Playground, Explain } from 'docz';
+import { Props } from './config';
+
+## Button
+
+<TagVersion component="Button" />
+
+## Use and Import
+
+<Explain component="Button" isCopyable/>
+
+## Case
+
+<Playground wrapper="Text Button">
+  <Button type="text" onClick={() => console.log('Text Button Click')}>default</Button>
+  <Button type="text" status="primary">primary</Button>
+  <Button type="text" status="success">success</Button>
+  <Button type="text" status="warning">warning</Button>
+  <Button type="text" status="error">error</Button>
+  <Button type="text" status="disabled" onClick={() => console.log('disabled Not Click')}>disabled</Button>
+</Playground>
+
+<Playground wrapper="Button">
+  <Button onClick={() => console.log('Button Click')}>default</Button>
+  <Button status="primary">primary</Button>
+  <Button status="success">success</Button>
+  <Button status="warning">warning</Button>
+  <Button status="error">error</Button>
+  <Button type="primary" status="disabled" onClick={() => console.log('disabled Not Click')}>
+    disabled
+  </Button>
+</Playground>
+
+<Playground wrapper="Size">
+  <Button block onClick={() => console.log('Block Click')}>block</Button>
+  <Button size="large" status="primary">normal</Button>
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

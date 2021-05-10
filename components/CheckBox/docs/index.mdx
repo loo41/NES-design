@@ -1,0 +1,147 @@
+---
+name: 复选框 / Checkbox
+route: /checkbox
+menu: 表单 / Form 
+---
+
+import { CheckBox, CheckboxGroup, Table } from '@components';
+import { Playground, TagVersion, Explain} from 'docz';
+import { Props } from './config';
+
+## Checkbox
+
+<TagVersion component="Checkbox" />
+
+## Use and Import
+
+<Explain component="Checkbox" isCopyable/>
+
+
+## Case
+
+<Playground wrapper="CheckBox">
+  {() => {
+    const [checked, setChecked] = useState(false)
+    return <CheckBox checked={checked} onChange={(e) => setChecked(e.target.checked)}> Yes </CheckBox>
+  }}
+</Playground>
+
+<Playground wrapper="CheckboxGroup / Option is Object">
+  {
+    () => {
+      const [value, setValue] = useState([])
+      return (
+        <>
+          <CheckboxGroup
+            value={value}
+            options={[
+              { label: 'Yes', value: 'yes', defaultChecked: true },
+              { label: 'No', value: 'no'},
+            ]}
+            onChange={values => setValue(values)}
+          />
+          <CheckboxGroup
+            theme="dark"
+            style={{
+              display: 'flex',
+              background: 'black', 
+              height: 50, 
+              alignItems: 'center'
+            }}
+            value={value}
+            options={[
+              { label: 'Yes', value: 'yes', defaultChecked: true },
+              { label: 'No', value: 'no'},
+            ]}
+            onChange={values => setValue(values)}
+          />
+        </>
+      )
+    }
+  }
+</Playground>
+
+<Playground wrapper="CheckboxGroup / Option is string">
+  {
+    () => {
+      const [value, setValue] = useState([])
+      return (
+        <CheckboxGroup
+          value={value}
+          options={['Yes', 'No']}
+          onChange={values => setValue(values)}
+        />
+      )
+    }
+  }
+</Playground>
+
+<Playground wrapper="CheckboxGroup + CheckBox">
+  {
+    () => {
+      const [value, setValue] = useState(['orange'])
+      return (
+        <CheckboxGroup
+          value={value}
+          options={[
+            { label: 'Apple', value: 'apple', defaultChecked: true },
+            { label: 'Banana', value: 'banana'},
+          ]}
+          onChange={values => setValue(values)}
+        >
+          <CheckBox labelProps={{style: { display: 'block' }}} value="orange" children="Orange" />
+        </CheckboxGroup>
+      )
+    }
+  }
+</Playground>
+
+
+<Playground wrapper="disabled">
+  {
+    () => {
+      const [value, setValue] = useState(['orange'])
+      return (
+        <>
+          <CheckboxGroup
+            disabled
+            value={value}
+            options={[
+              { label: 'Apple', value: 'apple', defaultChecked: true },
+            ]}
+            onChange={values => setValue(values)}
+          />
+          <CheckBox disabled defaultChecked> Banana </CheckBox>
+        </>
+      )
+    }
+  }
+</Playground>
+
+
+## Props
+
+<>
+  {
+    [Props.public, Props.checkboxGroup, Props.checkbox, Props.option].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

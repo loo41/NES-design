@@ -1,0 +1,67 @@
+---
+name: 头像 / Avatar
+route: /avatar
+menu: 信息 / Information
+---
+
+import { Playground } from 'docz';
+import { Avatar, Table } from '@components';
+import { Props } from './config';
+
+## Avatar
+
+<TagVersion component="Avatar" />
+
+## Use and Import
+
+<Explain component="Avatar" isCopyable/>
+
+## Case
+
+<Playground>
+  <Avatar />
+  <Avatar round />
+</Playground>
+
+<Playground wrapper="Src">
+  <Avatar src="https://www.gravatar.com/avatar?s=15" />
+</Playground>
+
+<Playground wrapper="Round">
+  <Avatar src="https://www.gravatar.com/avatar?s=15"  />
+  <Avatar src="https://www.gravatar.com/avatar?s=15" round />
+</Playground>
+
+<Playground wrapper="Size">
+  <Avatar src="https://www.gravatar.com/avatar?s=15" size="large" />
+  <Avatar src="https://www.gravatar.com/avatar?s=15" size="medium" />
+  <Avatar src="https://www.gravatar.com/avatar?s=15" size="small" />
+</Playground>
+
+
+## Props
+
+<>
+  {
+    [Props.public].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

@@ -1,0 +1,138 @@
+---
+name: 单选框 / Radio
+route: /radio
+menu: 表单 / Form
+---
+
+import { Playground } from 'docz';
+import { Radio, RadioGroup, Table } from '@components';
+import { Props } from './config';
+
+## Radio
+
+<TagVersion component="Radio" />
+
+## Use and Import
+
+<Explain component="Radio" isCopyable/>
+
+
+## Case
+
+<Playground wrapper="Radio">
+  {() => {
+    const [checked, setChecked] = useState(false)
+    return <Radio checked={checked} onFocus={(e) => setChecked(!checked)}> Sure </Radio>
+  }}
+</Playground>
+
+<Playground wrapper="RadioGroup">
+  {() => {
+    const [value, setValue] = useState('yes')
+    return <div>
+      <div style={{
+        display: 'flex',
+        height: 50,
+        fontSize: 18,
+        fontWeight: 'bold',
+        alignItems: 'center'
+      }}>
+        Play Game
+      </div>
+      <RadioGroup
+        twinkleDelay={true}
+        value={value}
+        onChange={value => setValue(value)}
+        options={[
+          { label: 'Yes', value: 'yes', defaultChecked: true },
+          { label: 'No', value: 'no'},
+        ]}
+      />
+      <RadioGroup
+        theme="dark"
+        value={value}
+        style={{ 
+          display: 'flex',
+          background: 'black', 
+          height: 50, 
+          alignItems: 'center' 
+        }}
+        defaultValue="yes"
+        onChange={(value) => setValue(value)}
+        options={[
+          { label: 'Yes', value: 'yes', defaultChecked: true },
+          { label: 'No', value: 'no'},
+        ]}
+      />
+    </div>
+  }}
+</Playground>
+
+<Playground wrapper="RadioGroup + Radio">
+  {() => {
+    const [value, setValue] = useState('orange')
+    return (
+      <div>
+        <div style={{
+          display: 'flex',
+          height: 50,
+          fontSize: 18,
+          fontWeight: 'bold',
+          alignItems: 'center'
+        }}>
+          Choose Fruit
+        </div>
+          <RadioGroup
+            twinkleDelay={1000}
+            value={value}
+            onChange={value => setValue(value)}
+            options={[
+              { label: 'Apple', value: 'apple', defaultChecked: true },
+              { label: 'Banana', value: 'banana'},
+            ]}
+          >
+            <Radio labelProps={{style: { display: 'block' }}} value="orange" children="Orange" />
+          </RadioGroup>
+      </div>
+    )
+  }}
+</Playground>
+
+<Playground wrapper="disabled">
+  <RadioGroup
+    disabled
+    twinkleDelay={false}
+    defaultValue="yes"
+    options={[
+      { label: 'Yes', value: 'yes', defaultChecked: true },
+      { label: 'No', value: 'no'},
+    ]}
+  />
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public, Props.radioGroup, Props.radio, Props.option].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>

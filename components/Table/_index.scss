@@ -1,0 +1,52 @@
+@function getClass() {
+  @return '.' + injectPrefixCls(cell-fix-left),
+    '.' + injectPrefixCls(cell-fix-left-first),
+    '.' + injectPrefixCls(cell-fix-left-last),
+    '.' + injectPrefixCls(cell-fix-right-first),
+    '.' + injectPrefixCls(cell-fix-right-last);
+}
+
+.#{injectPrefixCls(table)} {
+  box-sizing: border-box;
+  padding: 4px;
+  table {
+    width: 100%;
+  }
+  #{getClass()} {
+    background-color: black;
+    color: white;
+    z-index: 2;
+  }
+}
+
+.#{injectPrefixCls(table-theme-dark)} {
+  #{getClass()} {
+    background-color: gray;
+    z-index: 2;
+  }
+}
+
+// patch
+// 补丁
+.#{injectPrefixCls(patch-td-border-width)} {
+  .#{injectPrefixCls(cell)} {
+    tbody tr td,
+    .#{injectPrefixCls(thead)} th {
+      border-bottom-width: 0.25rem;
+    }
+    tbody tr:last-child td,
+    tbody tr:last-child th {
+      border-bottom-width: 0;
+    }
+  }
+}
+
+// fix nes.css ^2.3.0 table bug
+// https://github.com/nostalgic-css/NES.css/pull/421
+.nes-table.is-dark::before {
+  content: '';
+  top: unset;
+  left: unset;
+  right: unset;
+  bottom: unset;
+}

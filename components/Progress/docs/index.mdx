@@ -1,0 +1,59 @@
+---
+name: 进度条 / Progress
+route: /progress
+menu: 数据 / Data
+---
+
+import { Playground } from 'docz';
+import { Progress, Table } from '@components';
+import { Props } from './config';
+
+## Progress
+
+<TagVersion component="Progress" />
+
+## Use and Import
+
+<Explain component="Progress" isCopyable/>
+
+## Case
+
+<Playground wrapper="默认">
+  <Progress value={10} max={100} />
+</Playground>
+
+<Playground wrapper="类型">
+  <Progress value={10} style={{ height: 20 }} max={100} />
+  <Progress value={20} max={100} style={{ height: 20 }} type="primary"/>
+  <Progress value={30} max={100} style={{ height: 20 }}type="success"/>
+  <Progress value={40} max={100} style={{ height: 20 }}type="warning"/>
+  <Progress value={50} max={100} style={{ height: 20 }}type="error"/>
+  <Progress value={60} max={100} style={{ height: 30 }} type="pattern"/>
+</Playground>
+
+## Props
+
+<>
+  {
+    [Props.public].map(({columns, data, footer}) => (
+      <div style={{marginTop: 20}}>
+        <Table
+          theme="dark"
+          columns={columns} 
+          data={data}
+          footer={() => (
+            <div style={{
+              height: 60,
+              borderTop: '4px solid white', 
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+            {footer}
+            </div>
+          )}
+        />
+      </div>
+    ))
+  }
+</>
