@@ -1,0 +1,16 @@
+node_modules/
+
+## compress folder
+dist/
+
+## docz runtime folder
+.docz/
+
+## es6 folder
+lib/
+
+## es5 folder
+es/
+
+## types folder
+types/
