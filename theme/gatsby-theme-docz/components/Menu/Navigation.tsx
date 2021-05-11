@@ -9,7 +9,7 @@ const Navigation: React.FC<{ filterText: string }> = ({ filterText }) => {
 
   useEffect(() => {
     if (window.location.pathname) {
-      setPathname(window.location.pathname.replace(/\\/, ''));
+      setPathname(`/${window.location.pathname.split('/').pop()}`);
     }
   }, []);
 
