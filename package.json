@@ -8,10 +8,10 @@
   "typings": "types/index.d.ts",
   "scripts": {
     "test": "jest",
-    "docz:dev": "rm -rf .docz && mkdir .docz && cp -r static .docz/static && docz dev ",
+    "docz:dev": "npm run docz:clean && docz dev ",
     "docz:build": "docz build",
     "docz:serve": "docz build && docz serve",
-    "docz:clean": "rm -rf .docz && rm -rf docs && gatsby clean",
+    "docz:clean": "rimraf .docz && mkdir .docz && cpr static .docz/static",
     "build": "gulp",
     "build:components": "gulp compile",
     "build:types": "tsc --declaration --emitDeclarationOnly",
@@ -52,6 +52,7 @@
     "@types/sinon": "^10.0.0",
     "@typescript-eslint/parser": "^4.22.1",
     "commitizen": "^4.2.4",
+    "cpr": "^3.0.1",
     "cz-conventional-changelog": "^3.3.0",
     "docz": "^2.3.1",
     "enzyme": "^3.11.0",
@@ -76,6 +77,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-highlight": "^0.14.0",
+    "rimraf": "^2.6.3",
     "sass-resources-loader": "^2.2.1",
     "sinon": "^10.0.0",
     "typescript": "^4.2.4"
