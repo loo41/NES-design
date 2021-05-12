@@ -1,11 +1,20 @@
 const { dest, src, series } = require('gulp');
+const path = require('path');
 const eslint = require('gulp-eslint');
 const babel = require('gulp-babel');
 const scss = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const del = require('del');
-const rename = require('gulp-rename');
+const rollup = require('rollup');
+const resolve = require('rollup-plugin-node-resolve');
+const commonjs = require('rollup-plugin-commonjs');
+const ts = require('rollup-plugin-typescript2');
+const { babel: rollupBabel } = require('@rollup/plugin-babel');
+const { terser } = require('rollup-plugin-terser');
+const { name } = require('./package.json');
+
+const toHump = name => name.replace(/\-(\w){1}/, (all, $1) => $1.toUpperCase());
 
 const components = [
   'components/**/*.tsx',
@@ -17,8 +26,9 @@ const styles = ['components/**/*.scss', 'components/*.scss'];
 const FOLDER = {
   es: 'es',
   lib: 'lib',
-  build: 'build',
+  dist: 'dist',
 };
+const Entry = path.join(__dirname, 'components/index.ts');
 
 function compileScripts(babelEnv, destDir) {
   // set eslint env
@@ -29,7 +39,7 @@ function compileScripts(babelEnv, destDir) {
 }
 
 function clean(cb) {
-  del([FOLDER.build, FOLDER.lib, 'es'])
+  del([FOLDER.dist, FOLDER.lib, 'es'])
     .then(() => {
       cb();
     })
@@ -63,7 +73,8 @@ function compileScss(cb) {
     .pipe(autoprefixer())
     .pipe(cssnano({ zindex: false, reduceIdents: false }))
     .pipe(dest(FOLDER.lib))
-    .pipe(dest(FOLDER.es));
+    .pipe(dest(FOLDER.es))
+    .pipe(dest(FOLDER.dist));
   cb();
 }
 
@@ -88,6 +99,43 @@ function compileESM() {
  * compile dist CDN
  */
 
-exports.compile = series(clean, lint, copyScss, compileScss, compileCJS, compileESM);
+async function compileCDN() {
+  const bundle = await rollup.rollup({
+    input: Entry,
+    external: ['react', 'react-dom'],
+    plugins: [
+      scss(),
+      terser(),
+      ts(),
+      rollupBabel(),
+      resolve(),
+      commonjs({
+        include: 'node_modules/**',
+        namedExports: {
+          'node_modules/react-is/index.js': ['isFragment', 'ForwardRef', 'isMemo'],
+        },
+      }),
+    ],
+  });
+  return await bundle.write({
+    file: `${FOLDER.dist}/${name}.min.js`,
+    format: 'iife',
+    name: toHump(name),
+    globals: {
+      react: 'React',
+      'react-dom': 'ReactDOM',
+    },
+  });
+}
 
-exports.default = series(clean, lint, copyScss, compileScss, compileCJS, compileESM);
+exports.compileCDN = series(compileCDN);
+
+exports.default = series(
+  clean,
+  lint,
+  copyScss,
+  compileScss,
+  compileCJS,
+  compileESM,
+  compileCDN,
+);

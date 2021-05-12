@@ -12,7 +12,8 @@
     "jsx": "react",
     "allowJs": true,
     "esModuleInterop": true,
-    "noImplicitAny": false,
+    "importHelpers": true,
+    "noImplicitAny": false
   },
   "exclude": [
     "node_modules",
