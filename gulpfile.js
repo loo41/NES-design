@@ -11,6 +11,7 @@ const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const ts = require('rollup-plugin-typescript2');
 const { babel: rollupBabel } = require('@rollup/plugin-babel');
+const replace = require('rollup-plugin-replace');
 const { terser } = require('rollup-plugin-terser');
 const { name } = require('./package.json');
 
@@ -104,11 +105,17 @@ async function compileCDN() {
     input: Entry,
     external: ['react', 'react-dom'],
     plugins: [
-      scss(),
+      replace({
+        'process.env.NODE_ENV': JSON.stringify('production'),
+      }),
       terser(),
       ts(),
       rollupBabel(),
-      resolve(),
+      resolve({
+        jsnext: true,
+        main: true,
+        browser: true,
+      }),
       commonjs({
         include: 'node_modules/**',
         namedExports: {
@@ -119,7 +126,7 @@ async function compileCDN() {
   });
   return await bundle.write({
     file: `${FOLDER.dist}/${name}.min.js`,
-    format: 'iife',
+    format: 'umd',
     name: toHump(name),
     globals: {
       react: 'React',
