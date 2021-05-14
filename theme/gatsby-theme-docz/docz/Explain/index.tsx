@@ -19,7 +19,8 @@ const Explain: React.FC<{
   code?: string;
   isCopyable: boolean;
   language?: string;
-}> = ({ component, code, isCopyable, language = 'react' }) => {
+  auto?: boolean;
+}> = ({ component, code, isCopyable, auto, language = 'react' }) => {
   const [copyText, setCopyText] = useState(Copy);
   const textareaRef = useRef(null);
 
@@ -46,8 +47,11 @@ const Explain: React.FC<{
     [copyText === Copy ? styles.isCopy : styles.isCopied]: true,
   });
 
+  const style =
+    auto && ({ height: 'auto', position: 'relative' } as React.CSSProperties);
+  console.log('code', code);
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={style}>
       <Highlight language={language}>{code || text}</Highlight>
       {isCopyable && (
         <div className={CopyClassNames} onClick={() => copy()}>
