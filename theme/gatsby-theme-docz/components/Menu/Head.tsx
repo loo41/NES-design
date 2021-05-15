@@ -1,6 +1,7 @@
 import React from 'react';
 import { Input, Icon } from '@components';
 import styles from './index.module.scss';
+import doczSet from '@root/doczrc.js';
 const { name } = require('@root/package.json');
 
 const Head: React.FC<{ setFilterText: (text: string) => void }> = ({
@@ -9,7 +10,7 @@ const Head: React.FC<{ setFilterText: (text: string) => void }> = ({
   return (
     <div className={styles.headWrapper}>
       <div className={styles.header}>
-        <div onClick={() => window.open('/', '_self')}>
+        <div onClick={() => window.open(`${doczSet.base}`, '_self')}>
           {name.split('-')[0].toUpperCase()}-{name.split('-')[1]}
         </div>
         <div>

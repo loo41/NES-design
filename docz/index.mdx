@@ -4,6 +4,7 @@ route: /
 ---
 
 import { Radio, RadioGroup, Button, Icon } from '@components';
+import doczSet from '@root/doczrc.js'
 
 # NES-design
 
@@ -32,7 +33,7 @@ import { Radio, RadioGroup, Button, Icon } from '@components';
 </div>
 
 <div style={{ display: 'flex', alignItems: 'center',  fontSize: 20}} >
-  <Button type="text" onClick={() => window.open(`/install`, '_self')}>Getting Started</Button>
+  <Button type="text" onClick={() => window.open(`${doczSet.base}install`, '_self')}>Getting Started</Button>
   <Button
     onClick={() => window.open('https://github.com/loo41/NES-design')}
     style={{display: 'flex', alignItems: 'center', marginLeft: 50}}>
