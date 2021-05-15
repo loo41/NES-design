@@ -28,3 +28,20 @@
 .contentBottom {
   height: 50px;
 }
+
+.footerGithub {
+  z-index: 10;
+  position: fixed;
+  bottom: 150px;
+  left: 50px;
+}
+
+.balloon {
+  position: absolute;
+  left: 100px;
+  top: -30px;
+  p {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+}

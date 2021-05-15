@@ -36,7 +36,8 @@
   "warehouse": "https://github.com/loo41/NES-design",
   "dependencies": {
     "classnames": "^2.3.1",
-    "rc-table": "^7.14.0"
+    "rc-table": "^7.14.0",
+    "react-helmet": "^5.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",

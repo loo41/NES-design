@@ -3,9 +3,39 @@ name: Introduction
 route: /
 ---
 
-import { Playground } from 'docz';
-import { Radio, RadioGroup, Table } from '@components';
+import { Radio, RadioGroup, Button, Icon } from '@components';
 
 # NES-design
 
-## React Game Style UI Component Library
+## Game Style React UI Component Library
+
+<div style={{
+  height: 150,
+  display: 'flex', 
+  alignItems: 'center',
+  width: 350,
+  justifyContent: 'center'
+}}>
+  <RadioGroup>
+    <Radio 
+      defaultChecked 
+      autoFocus 
+      value="start" 
+      children={<Icon customClass="snes-logo" />}
+    />
+    <Radio 
+      value="github"
+      children={
+        <Icon customClass="snes-jp-logo" />
+      } />
+  </RadioGroup>
+</div>
+
+<div style={{ display: 'flex', alignItems: 'center',  fontSize: 20}} >
+  <Button type="text" onClick={() => window.open(`/install`, '_self')}>Getting Started</Button>
+  <Button
+    onClick={() => window.open('https://github.com/loo41/NES-design')}
+    style={{display: 'flex', alignItems: 'center', marginLeft: 50}}>
+    Github <Icon name="github" />
+  </Button>
+</div>

@@ -6,6 +6,8 @@ import Menu from './components/Menu';
 import Playground from './docz/Playground';
 import Explain from './docz/Explain';
 import TagVersion from './docz/TagVersion';
+import { Helmet } from 'react-helmet';
+import icon from '@root/static/favicon.ico';
 import './index.css';
 
 const components = {
@@ -19,6 +21,9 @@ const Theme: React.FC<{}> = ({ children }) => {
   return (
     <ThemeProvider theme={config}>
       <Page>
+        <Helmet>
+          <link rel="icon" href={icon} />
+        </Helmet>
         <Menu />
         <Content>
           <ComponentsProvider components={components}>{children}</ComponentsProvider>

@@ -49,7 +49,7 @@ const Explain: React.FC<{
 
   const style =
     auto && ({ height: 'auto', position: 'relative' } as React.CSSProperties);
-  console.log('code', code);
+
   return (
     <div className={styles.container} style={style}>
       <Highlight language={language}>{code || text}</Highlight>

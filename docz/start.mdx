@@ -11,23 +11,68 @@ import { Playground, TagVersion, Explain } from 'docz';
 
 <div style={{ marginTop: 30 }} />
 
-### 1. Install NES-design
+### Npm
+#### 1. Install NES-design
 
 <Explain code="npm install nes-design" isCopyable/>
 
-### 2. Install peerDependencies
+#### 2. Install peerDependencies
 
-<Explain code="npm install nes.css react@^16.8" isCopyable/>
+<Explain auto code="npm install nes.css >= 2.3.0
+npm install react >= 16.8" isCopyable/>
 
-### 3. Import css
+### CDN
 
-<Explain code="import 'node_modules/nes-design/es/index.css'" isCopyable/>
-<Explain code="import 'node_modules/nes.css/css/nes.css'" isCopyable/>
+### 1. Import js
 
-### 4. Use
+<Explain auto code="// Import React ReactDOM
+<script crossorigin src='https://unpkg.com/react@17/umd/react.development.js'></script>
+<script crossorigin src='https://unpkg.com/react-dom@17/umd/react-dom.development.js'></script>
+-
+// Import components
+<script src='xxx/nes-design.min.js'></script>
+" isCopyable/>
 
-<Explain code="import { Component } from 'nes-design'" isCopyable/>
-<Explain code="import Component from 'nes-design/Component'" isCopyable/>
+### 2. Link css
+<Explain auto code="// Link nes.css
+<link href='https://unpkg.com/nes.css@2.3.0/css/nes.min.css' rel='stylesheet' />
+-
+// Link nes-design
+<link rel='stylesheet' href=''xxx/index.css' />
+" isCopyable/>
+
+## Use
+
+### Npm Project
+
+<Explain auto code={
+`// Import css
+  // _.(css|scss|less)
+@import 'nes-design/es/index.css';
+@import 'nes.css/css/nes.css';
+  // _.(jsx|tsx)
+import 'nes-design/es/index.css';
+import 'nes.css/css/nes.css';
+-
+// Import Component
+import { Component } from 'nes-design';
+import Component from 'nes-design/Component';
+-
+// Use
+const Custom = () => <Component />
+ReactDOM.render(Custom,  document.getElementById('root'))`} 
+/>
+
+
+### CDN .Html Project
+
+<Explain auto code={`/**@jsx React.DOM*/
+const Custom = () => <Component />
+<script type='text/jsx'>
+   ReactDOM.render(Custom,  document.getElementById('root'))
+</script>`}
+/>
+
 
 <div style={{ marginTop: 30 }} />
 
@@ -35,13 +80,11 @@ import { Playground, TagVersion, Explain } from 'docz';
 
 <div style={{ marginTop: 30 }} />
 
-### 1. Remove nes.css css
-<Text status="error" style={{ fontWeight: 'bold' }}>Cannot remove nes-design css</Text>
+### 1. Create scss file And Import scss
+<Explain  auto code="@import 'node_modules/nes.css/scss/nes.scss';
+@import 'nes-design/es/index.css'" isCopyable/>
 
-### 2. Create scss file And Import scss
-<Explain code="import 'node_modules/nes.css/scss/nes.scss'" isCopyable/>
-
-### 3. Cover scss theme variable
+### 2. Cover scss theme variable
 
 <Text>
   <Text tag="a" href="https://github.com/nostalgic-css/NES.css/blob/develop/scss/base/variables.scss">
@@ -49,6 +92,35 @@ import { Playground, TagVersion, Explain } from 'docz';
   </Text>
 </Text>
 
-### 4. For Example
+### 3. Use
 
-<Explain code="$base-color: red !default;" isCopyable/>
+<Explain auto code={
+  `
+  // For Example
+  // _.scss
+  $primary-colors: (
+    normal: red,
+    hover: red,
+    shadow: red,
+  ) !default;
+  @import 'node_modules/nes.css/scss/nes.scss';
+  @import 'nes-design/es/index.css';
+  `
+} isCopyable/>
+
+<Text status="error" style={{ fontWeight: 'bold' }}>Will be an expected error,
+  I'm 
+  <Text tag="a" style={{margin: '0 10px'}} href="https://github.com/nostalgic-css/NES.css/issues/459">
+  following up
+  </Text> 
+  on that.
+</Text>
+<Text status="error" style={{ fontWeight: 'bold' }}>
+  Temporary solutions
+  <Text status="error">
+    Change 'node_modules/nes.css/scss/base/variables.scss'
+    <Explain  auto code={`$cursor-url: url('') !default; 
+$cursor-click-url: url('') !default;'`
+} />
+  </Text>
+</Text>

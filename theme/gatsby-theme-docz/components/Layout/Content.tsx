@@ -1,7 +1,11 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
+import { Icon, Balloon, Text } from '@components';
 import styles from './index.module.scss';
+const { warehouse } = require('@root/package.json');
 
 const ContentWrapper: React.FC<{}> = ({ children }) => {
+  const [visible, setVisible] = useState(false);
+
   const ref = useCallback((node: HTMLDivElement) => {
     if (node) {
       let opacity = 0;
@@ -35,6 +39,19 @@ const ContentWrapper: React.FC<{}> = ({ children }) => {
           {children}
           <div className={styles.contentBottom}></div>
         </div>
+      </div>
+      <div className={styles.footerGithub}>
+        <Icon
+          customClass="nes-octocat animate"
+          onMouseMove={() => !visible && setVisible(true)}
+          onMouseLeave={() => setVisible(false)}
+          onClick={() => window.open(warehouse)}
+        />
+        {visible && (
+          <Balloon place="left" className={styles.balloon}>
+            <Text status="error">Github Follow Me</Text>
+          </Balloon>
+        )}
       </div>
     </div>
   );
