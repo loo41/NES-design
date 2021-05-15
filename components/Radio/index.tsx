@@ -29,6 +29,7 @@ const Radio: React.FC<RadioProps> = ({
     'nes-radio': true,
     'is-dark': context?.theme || theme,
     'is-disabled': context?.disabled || disabled,
+    [injectPrefixCls('radio-before-center')]: true,
   });
 
   const isChecked = (): boolean => {
