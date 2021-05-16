@@ -1,0 +1,19 @@
+# User & editor settings
+.editorconfig
+.prettierignore
+.vscode
+commitlint.config.js
+
+# Build files
+.github
+node_modules
+
+# docz
+.gatsby-node.js
+.gatsby-config.js
+.gatsby-browser.js
+doczrc.js
+.docz
+docs
+docz
+theme
