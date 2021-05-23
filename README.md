@@ -34,11 +34,11 @@ NES.css is compatible with the newest version of the following browsers:
 
 - Chrome
 - Firefox
-- Safari
 
 Untested
 
 - IE/Edge
+- Safari
 
 ## Related Efforts
 
