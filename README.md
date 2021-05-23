@@ -12,8 +12,15 @@ yarn add nes-design
 ### Import Styles
 
 ```css
-@import 'nes-design/es/index.css';
+// css
 @import 'nes.css/css/nes.css';
+@import 'nes-design/es/index.css';
+```
+
+```js
+// tsx
+import 'nes.css/css/nes.css';
+import 'nes-design/es/index.css';
 ```
 
 ### Import Component
