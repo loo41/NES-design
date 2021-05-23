@@ -26,7 +26,7 @@ const Explain: React.FC<{
 
   const text =
     code ||
-    `import ${component} from '${name}/${component}';   OR   import { ${component} } from '${name}';`;
+    `import ${component} from '${name}/es/${component}';   OR   import { ${component} } from '${name}';`;
 
   const copy = () => {
     if (document.execCommand) {
