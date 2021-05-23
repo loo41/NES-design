@@ -28,6 +28,10 @@ const App = () => (
 );
 ```
 
+## Demo
+
+[codesandbox](https://codesandbox.io/s/awesome-bush-7hees?file=/src/App.tsx:216-220)
+
 ## Browser Support
 
 NES.css is compatible with the newest version of the following browsers:
