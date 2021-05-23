@@ -17,7 +17,10 @@
     "build:types": "tsc --declaration --emitDeclarationOnly",
     "lint": "eslint components --fix --ext .ts,.tsx ",
     "pre-commit": "lint-staged",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "release": "standard-version",
+    "release:beta": "standard-version --prerelease beta",
+    "release:rc": "standard-version --prerelease rc"
   },
   "husky": {
     "hooks": {
@@ -37,7 +40,8 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "rc-table": "^7.14.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "standard-version": "^9.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
